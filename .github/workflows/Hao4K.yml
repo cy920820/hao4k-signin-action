@@ -27,4 +27,4 @@ jobs:
       env:
         HAO4K_USERNAME: ${{ secrets.HAO4K_USERNAME }}
         HAO4K_PASSWORD: ${{ secrets.HAO4K_PASSWORD }}
-      run: python SignIn.py
+      run: python signin.py
