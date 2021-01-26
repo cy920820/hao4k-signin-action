@@ -1,0 +1,35 @@
+name: Hao4K
+
+on:
+  push:
+    branches: 
+      - main
+  schedule:
+    - cron: '0 22 * * *'
+
+jobs:
+  Hao4K-autoSignIn:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: checkout
+      uses: actions/checkout@master
+    
+    - name: Set python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    
+    - name: Install dependencies
+      run: python -m pip install --upgrade requests
+    
+    - name: Hao4k auto sign in
+      env:
+        HAO4K_USERNAME: ${{ secrets.HAO4K_USERNAME }}
+        HAO4K_PASSWORD: ${{ secrets.HAO4K_PASSWORD }}
+      run: python SignIn.py
+    
+    - name: Hao4k visit url
+      env:
+        HAO4K_URL: ${{ secrets.HAO4K_URL }}
+      run: python VisitURL1.py
