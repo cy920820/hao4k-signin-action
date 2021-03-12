@@ -5,7 +5,15 @@
 ## 功能
 
 - 每日凌晨 12 点定时签到
-- 支持监控告警，具体配置文档查看[Server 酱](http://sc.ftqq.com/)
+- 支持监控告警，具体配置文档查看[Server 酱](https://sct.ftqq.com/)，消息通道支持以下渠道
+  - 企业微信应用消息
+  - Android，
+  - Bark iOS，
+  - 企业微信群机器人
+  - 钉钉群机器人
+  - 飞书群机器人
+  - 自定义微信测试号
+  - 方糖服务号
 
 ## 使用方式
 
@@ -17,6 +25,11 @@
     - SERVERCHAN_SCKEY (监控告警 server 酱 sckey)
   - 配置到仓库的 `setting/secrets`
 - 修改定时任务时间，在 [.github/workflows/hao4k.yml](https://github.com/cy920820/hao4k-signin-action/blob/main/.github/workflows/hao4k.yml) line 8, 修改 cron 计时表达式，参考 [schedule](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events)（可选）
+
+## 自动同步上游代码
+
+> fork 本项目后，使用下面方法自动同步上游代码
+安装 Github App [Pull](https://github.com/apps/pull)， 将 fork 后的项目添加到Repository access 列表中即可实现自动同步上游代码
 
 ## 开发
 
