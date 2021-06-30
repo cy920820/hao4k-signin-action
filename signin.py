@@ -11,7 +11,7 @@ send_url = "https://sctapi.ftqq.com/%s.send" % (sckey)
 send_content = 'Server ERROR'
 
 # hao4k 签到 url
-user_url = "https://www.hao4k.cn/member.php?mod=logging&action=login&phonelogin=no"
+user_url = "https://www.hao4k.cn//member.php?mod=logging&action=login"
 base_url = "https://www.hao4k.cn/"
 signin_url = "https://www.hao4k.cn/plugin.php?id=k_misign:sign&operation=qiandao&formhash={formhash}&format=empty"
 form_data = {
@@ -26,7 +26,9 @@ inajax = '&inajax=1'
 
 def run(form_data):
     s = requests.Session()
-    user_resp = s.get(user_url)
+    s.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.106 Safari/537.36'})
+    headers = {"Content-Type": "text/html", 'Connection': 'close'}
+    user_resp = s.get(user_url,headers=headers)
     login_text = re.findall('action="(.*?)"', user_resp.text)
     for loginhash in login_text:
         if 'loginhash' in loginhash:
@@ -39,14 +41,14 @@ def run(form_data):
     print(form_data)
 
     login_resp = s.post(login_url, data=form_data)
-    test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html')
+    test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html',headers=headers)
     if username in test_resp.text:
       print('login!')
     else:
       return 'login failed!'
     signin_text = re.search('formhash=(.*?)"', test_resp.text)
     signin_resp = s.get(signin_url.format(formhash=signin_text.group(1)))
-    test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html')
+    test_resp = s.get('https://www.hao4k.cn/k_misign-sign.html',headers=headers)
     if '您的签到排名' in test_resp.text:
       print('signin!')
     else:
