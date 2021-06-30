@@ -9,7 +9,8 @@ password = os.environ["HAO4K_PASSWORD"]
 sckey = os.environ["SERVERCHAN_SCKEY"]
 send_url = "https://sctapi.ftqq.com/%s.send" % (sckey)
 send_content = 'Server ERROR'
-print(username,password,sckey)
+a= username
+print(a,password,sckey)
 # hao4k 签到 url
 user_url = "https://www.hao4k.cn//member.php?mod=logging&action=login"
 base_url = "https://www.hao4k.cn/"
