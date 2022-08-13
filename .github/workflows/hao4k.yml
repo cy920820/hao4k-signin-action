@@ -25,7 +25,7 @@ jobs:
     
     - name: Hao4k auto sign in
       env:
-        HAO4K_USERNAME: ${{ secrets.HAO4K_USERNAME }}
-        HAO4K_PASSWORD: ${{ secrets.HAO4K_PASSWORD }}
-        SERVERCHAN_SCKEY: ${{ secrets.SERVERCHAN_SCKEY }}
+        HAO4K_USERNAME: ${{ secrets.wol8782 }}
+        HAO4K_PASSWORD: ${{ secrets.Xinxin201394 }}
+        SERVERCHAN_SCKEY: ${{ secrets.SCT165217TL7UL4Kvv5EKpXlxnKK6WD99y }}
       run: python signin.py
